@@ -1,0 +1,47 @@
+@model AlaiaStore.Web.ViewModels.ProductCatalogViewModel
+@{
+    ViewData["Title"] = "Resultados de búsqueda";
+    var query = ViewData["SearchQuery"] as string ?? string.Empty;
+}
+
+<div class="container my-5 pt-4">
+    <div class="mb-4">
+        <h1 class="headline-large mb-1">Resultados de búsqueda</h1>
+        <p class="body-medium text-muted">@Model.Products.Count() resultado(s) para "@query"</p>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-md-3">
+                <div class="card product-card h-100 border-0 shadow-sm">
+                    <div class="overflow-hidden" style="height: 240px; background-color: var(--color-surface);">
+                        @if (!string.IsNullOrEmpty(product.MainImageUrl))
+                        {
+                            <img src="@product.MainImageUrl" class="w-100 h-100 object-fit-cover" alt="@product.Name" />
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center justify-content-center h-100">
+                                <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
+                            </div>
+                        }
+                    </div>
+                    <div class="card-body">
+                        <h5 class="font-title mb-2">@product.Name</h5>
+                        <p class="body-medium text-muted mb-3">$@product.Price.ToString("F2")</p>
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="btn btn-outline-secondary w-100">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Products.Any())
+    {
+        <div class="text-center mt-5">
+            <p class="body-large text-muted">No se encontraron productos con ese criterio.</p>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary mt-3">Volver al catálogo</a>
+        </div>
+    }
+</div>

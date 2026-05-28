@@ -1,0 +1,62 @@
+@model AlaiaStore.Web.ViewModels.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container my-5 pt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="headline-large mb-1">Panel Administrativo</h1>
+            <p class="body-medium text-muted">Resumen general del sistema</p>
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <p class="text-uppercase text-muted mb-1" style="letter-spacing: 1px; font-size: 0.75rem;">Productos</p>
+                    <h2 class="headline-medium mb-2">@Model.TotalProducts</h2>
+                    <p class="body-medium text-muted">Total registrados</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <p class="text-uppercase text-muted mb-1" style="letter-spacing: 1px; font-size: 0.75rem;">Categorías</p>
+                    <h2 class="headline-medium mb-2">@Model.TotalCategories</h2>
+                    <p class="body-medium text-muted">Categorías activas</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <p class="text-uppercase text-muted mb-1" style="letter-spacing: 1px; font-size: 0.75rem;">Usuarios</p>
+                    <h2 class="headline-medium mb-2">@Model.TotalUsers</h2>
+                    <p class="body-medium text-muted">Usuarios registrados</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <p class="text-uppercase text-muted mb-1" style="letter-spacing: 1px; font-size: 0.75rem;">Pedidos</p>
+                    <h2 class="headline-medium mb-2">@Model.TotalOrders</h2>
+                    <p class="body-medium text-muted">Órdenes generadas</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <p class="text-uppercase text-muted mb-1" style="letter-spacing: 1px; font-size: 0.75rem;">Ventas</p>
+                    <h2 class="headline-medium mb-2">$@Model.TotalSales.ToString("F2")</h2>
+                    <p class="body-medium text-muted">Total acumulado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

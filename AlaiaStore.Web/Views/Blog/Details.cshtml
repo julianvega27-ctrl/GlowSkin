@@ -1,0 +1,23 @@
+@model AlaiaStore.Web.ViewModels.Blog.BlogPostDetailViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container my-5 pt-4">
+    <div class="mb-4">
+        <h1 class="headline-large mb-1">@Model.Title</h1>
+        <p class="body-medium text-muted">@Model.CreatedAt.ToString("dd/MM/yyyy")</p>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+        {
+            <div class="overflow-hidden" style="height: 320px; background-color: var(--color-surface);">
+                <img src="@Model.ImageUrl" class="w-100 h-100 object-fit-cover" alt="@Model.Title" />
+            </div>
+        }
+        <div class="card-body p-4">
+            <div class="body-large text-muted" style="line-height: 1.9; white-space: pre-line;">@Model.Content</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11819.183 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaiaStore.Domain", "AlaiaStore.Domain\AlaiaStore.Domain.csproj", "{D007CDAC-343E-4176-9864-606FD16077BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaiaStore.Infrastructure", "AlaiaStore.Infrastructure\AlaiaStore.Infrastructure.csproj", "{82B12F30-2120-467E-BE8F-03ABA535AA72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaiaStore.Test", "AlaiaStore.Test\AlaiaStore.Test.csproj", "{4CC3559A-050D-4F48-8508-229BE0ADA487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlaiaStore.Web", "AlaiaStore.Web\AlaiaStore.Web.csproj", "{8DAB7B60-2651-47AB-9FEA-9E1D9ED5B60D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specific", "Specific", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Agente.md = Agente.md
+		Analisis.md = Analisis.md
+		Arquitectura.md = Arquitectura.md
+		DataBase.md = DataBase.md
+		Diseño.md = Diseño.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D007CDAC-343E-4176-9864-606FD16077BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D007CDAC-343E-4176-9864-606FD16077BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D007CDAC-343E-4176-9864-606FD16077BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D007CDAC-343E-4176-9864-606FD16077BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B12F30-2120-467E-BE8F-03ABA535AA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B12F30-2120-467E-BE8F-03ABA535AA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B12F30-2120-467E-BE8F-03ABA535AA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B12F30-2120-467E-BE8F-03ABA535AA72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CC3559A-050D-4F48-8508-229BE0ADA487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CC3559A-050D-4F48-8508-229BE0ADA487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CC3559A-050D-4F48-8508-229BE0ADA487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CC3559A-050D-4F48-8508-229BE0ADA487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAB7B60-2651-47AB-9FEA-9E1D9ED5B60D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAB7B60-2651-47AB-9FEA-9E1D9ED5B60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAB7B60-2651-47AB-9FEA-9E1D9ED5B60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAB7B60-2651-47AB-9FEA-9E1D9ED5B60D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B40B621-DF1D-4D92-A5A7-F4D65FC49776}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,47 @@
+@model AlaiaStore.Web.ViewModels.Blog.BlogPostFormViewModel
+@{
+    ViewData["Title"] = "Nueva publicación";
+}
+
+<div class="container my-5 pt-4">
+    <partial name="_AdminNav" />
+    <div class="mb-4">
+        <h1 class="headline-large mb-1">Nueva publicación</h1>
+        <p class="body-medium text-muted">Completa la información del artículo</p>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+            <form method="post" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Título</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Subir Imagen</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Contenido</label>
+                        <textarea asp-for="Content" class="form-control" rows="8"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input asp-for="IsPublished" class="form-check-input" />
+                            <label class="form-check-label" for="IsPublished">Publicar</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a class="btn btn-outline-secondary" asp-action="Admin">Cancelar</a>
+                    <button class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+@model AlaiaStore.Web.ViewModels.Blog.BlogPostFormViewModel
+@{
+    ViewData["Title"] = "Editar publicación";
+}
+
+<div class="container my-5 pt-4">
+    <partial name="_AdminNav" />
+    <div class="mb-4">
+        <h1 class="headline-large mb-1">Editar publicación</h1>
+        <p class="body-medium text-muted">Actualiza el contenido</p>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Título</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Subir nueva imagen</label>
+                        <input type="hidden" asp-for="ImageUrl" />
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <div class="mb-2">
+                                <img src="@Model.ImageUrl" alt="Imagen actual" style="max-height: 100px; border-radius: 4px;" />
+                            </div>
+                        }
+                        <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        <div class="form-text">Si no deseas cambiar la imagen, deja este campo en blanco.</div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Contenido</label>
+                        <textarea asp-for="Content" class="form-control" rows="8"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input asp-for="IsPublished" class="form-check-input" />
+                            <label class="form-check-label" for="IsPublished">Publicar</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a class="btn btn-outline-secondary" asp-action="Admin">Cancelar</a>
+                    <button class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

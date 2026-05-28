@@ -1,0 +1,116 @@
+Summary
+  Generated on: 27/05/2026 - 01:43:13 p. m.
+  Coverage date: 27/05/2026 - 12:00:58 p. m.
+  Parser: Cobertura
+  Assemblies: 3
+  Classes: 90
+  Files: 89
+  Line coverage: 6.5%
+  Covered lines: 212
+  Uncovered lines: 3009
+  Coverable lines: 3221
+  Total lines: 5476
+  Branch coverage: 4.1% (16 of 388)
+  Covered branches: 16
+  Total branches: 388
+  Method coverage: 29.9% (105 of 351)
+  Full method coverage: 29.9% (105 of 351)
+  Covered methods: 105
+  Fully covered methods: 105
+  Total methods: 351
+
+AlaiaStore.Domain                                                               55.6%
+  AlaiaStore.Domain.Common.BaseEntity                                            100%
+  AlaiaStore.Domain.Entities.Address                                            28.5%
+  AlaiaStore.Domain.Entities.BlogPost                                             80%
+  AlaiaStore.Domain.Entities.Cart                                                 75%
+  AlaiaStore.Domain.Entities.CartItem                                           33.3%
+  AlaiaStore.Domain.Entities.Category                                             80%
+  AlaiaStore.Domain.Entities.Order                                                70%
+  AlaiaStore.Domain.Entities.OrderDetail                                        28.5%
+  AlaiaStore.Domain.Entities.Payment                                            42.8%
+  AlaiaStore.Domain.Entities.Product                                              50%
+  AlaiaStore.Domain.Entities.ProductImage                                         50%
+  AlaiaStore.Domain.Entities.ProductPromotion                                     50%
+  AlaiaStore.Domain.Entities.Promotion                                          42.8%
+  AlaiaStore.Domain.Entities.Review                                             42.8%
+  AlaiaStore.Domain.Entities.Role                                                100%
+  AlaiaStore.Domain.Entities.User                                               76.9%
+  AlaiaStore.Domain.Entities.UserRole                                             50%
+  AlaiaStore.Domain.Entities.Wishlist                                           66.6%
+  AlaiaStore.Domain.Entities.WishlistItem                                         50%
+
+AlaiaStore.Infrastructure                                                        3.1%
+  AlaiaStore.Infrastructure.Data.ApplicationDbContext                            100%
+  AlaiaStore.Infrastructure.Data.Migrations.AddImagesToProducts                    0%
+  AlaiaStore.Infrastructure.Data.Migrations.ApplicationDbContextModelSnapshot      0%
+  AlaiaStore.Infrastructure.Data.SeedData                                          0%
+  AlaiaStore.Infrastructure.Repositories.CategoryRepository                      100%
+  AlaiaStore.Infrastructure.Repositories.OrderRepository                           0%
+  AlaiaStore.Infrastructure.Repositories.ProductRepository                         0%
+  AlaiaStore.Infrastructure.Repositories.Repository<T>                           100%
+  AlaiaStore.Infrastructure.Repositories.ReviewRepository                          0%
+  AlaiaStore.Infrastructure.Repositories.UserRepository                            0%
+  AlaiaStore.Infrastructure.Repositories.WishlistRepository                        0%
+
+AlaiaStore.Web                                                                   8.4%
+  AlaiaStore.Web.Controllers.AdminController                                       0%
+  AlaiaStore.Web.Controllers.AuthController                                        0%
+  AlaiaStore.Web.Controllers.BlogController                                        0%
+  AlaiaStore.Web.Controllers.HomeController                                      100%
+  AlaiaStore.Web.Controllers.ProductController                                     0%
+  AlaiaStore.Web.Controllers.PromotionController                                   0%
+  AlaiaStore.Web.Controllers.ReviewController                                      0%
+  AlaiaStore.Web.DTOs.Admin.AdminProductEditDto                                    0%
+  AlaiaStore.Web.DTOs.CategoryDto                                                  0%
+  AlaiaStore.Web.DTOs.LoginDto                                                     0%
+  AlaiaStore.Web.DTOs.ProductDto                                                33.3%
+  AlaiaStore.Web.DTOs.RegisterDto                                                  0%
+  AlaiaStore.Web.DTOs.UserDto                                                      0%
+  AlaiaStore.Web.Mappings.AutoMapperProfile                                        0%
+  AlaiaStore.Web.Models.ErrorViewModel                                            50%
+  AlaiaStore.Web.Services.AuthenticationService                                  100%
+  AlaiaStore.Web.Services.PromotionService                                         0%
+  AlaiaStore.Web.Services.UserService                                            100%
+  AlaiaStore.Web.ViewModels.Admin.AdminOrderListItemViewModel                      0%
+  AlaiaStore.Web.ViewModels.Admin.AdminOrderListViewModel                          0%
+  AlaiaStore.Web.ViewModels.Admin.AdminProductFormViewModel                        0%
+  AlaiaStore.Web.ViewModels.Admin.AdminProductListItemViewModel                    0%
+  AlaiaStore.Web.ViewModels.Admin.AdminProductListViewModel                        0%
+  AlaiaStore.Web.ViewModels.Admin.AdminUserListItemViewModel                       0%
+  AlaiaStore.Web.ViewModels.Admin.AdminUserListViewModel                           0%
+  AlaiaStore.Web.ViewModels.AdminDashboardViewModel                                0%
+  AlaiaStore.Web.ViewModels.Blog.BlogPostDetailViewModel                           0%
+  AlaiaStore.Web.ViewModels.Blog.BlogPostFormViewModel                             0%
+  AlaiaStore.Web.ViewModels.Blog.BlogPostListItemViewModel                         0%
+  AlaiaStore.Web.ViewModels.ProductCatalogViewModel                                0%
+  AlaiaStore.Web.ViewModels.Promotions.PromotionFormViewModel                      0%
+  AlaiaStore.Web.ViewModels.Promotions.PromotionListItemViewModel                  0%
+  AlaiaStore.Web.ViewModels.Reviews.ProductReviewsViewModel                        0%
+  AlaiaStore.Web.ViewModels.Reviews.ReviewCreateDto                                0%
+  AlaiaStore.Web.ViewModels.Reviews.ReviewListItemViewModel                        0%
+  AspNetCoreGeneratedDocument.Views__ViewStart                                     0%
+  AspNetCoreGeneratedDocument.Views_Admin_CreateProduct                            0%
+  AspNetCoreGeneratedDocument.Views_Admin_EditProduct                              0%
+  AspNetCoreGeneratedDocument.Views_Admin_Index                                    0%
+  AspNetCoreGeneratedDocument.Views_Admin_Orders                                   0%
+  AspNetCoreGeneratedDocument.Views_Admin_Products                                 0%
+  AspNetCoreGeneratedDocument.Views_Admin_Users                                    0%
+  AspNetCoreGeneratedDocument.Views_Auth_Login                                     0%
+  AspNetCoreGeneratedDocument.Views_Auth_Register                                  0%
+  AspNetCoreGeneratedDocument.Views_Blog_Admin                                     0%
+  AspNetCoreGeneratedDocument.Views_Blog_Create                                    0%
+  AspNetCoreGeneratedDocument.Views_Blog_Details                                   0%
+  AspNetCoreGeneratedDocument.Views_Blog_Edit                                      0%
+  AspNetCoreGeneratedDocument.Views_Blog_Index                                     0%
+  AspNetCoreGeneratedDocument.Views_Home_Index                                     0%
+  AspNetCoreGeneratedDocument.Views_Home_Privacy                                   0%
+  AspNetCoreGeneratedDocument.Views_Product_Details                                0%
+  AspNetCoreGeneratedDocument.Views_Product_Index                                  0%
+  AspNetCoreGeneratedDocument.Views_Product_Search                                 0%
+  AspNetCoreGeneratedDocument.Views_Promotion_Create                               0%
+  AspNetCoreGeneratedDocument.Views_Promotion_Edit                                 0%
+  AspNetCoreGeneratedDocument.Views_Promotion_Index                                0%
+  AspNetCoreGeneratedDocument.Views_Shared__Layout                                 0%
+  AspNetCoreGeneratedDocument.Views_Shared_Error                                   0%
+  Program                                                                          0%

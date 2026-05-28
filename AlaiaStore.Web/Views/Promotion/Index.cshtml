@@ -1,0 +1,50 @@
+@model IEnumerable<AlaiaStore.Web.ViewModels.Promotions.PromotionListItemViewModel>
+@{
+    ViewData["Title"] = "Promociones";
+}
+
+<div class="container my-5 pt-4">
+    <partial name="_AdminNav" />
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <h1 class="headline-large mb-1">Promociones</h1>
+            <p class="body-medium text-muted">Gestión de descuentos activos</p>
+        </div>
+        <a class="btn btn-primary" asp-action="Create">Nueva promoción</a>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-borderless align-middle mb-0">
+                <thead class="border-bottom">
+                    <tr>
+                        <th>Título</th>
+                        <th>Descuento</th>
+                        <th>Periodo</th>
+                        <th class="text-center">Estado</th>
+                        <th class="text-end">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var promo in Model)
+                    {
+                        <tr>
+                            <td>@promo.Title</td>
+                            <td>@(promo.DiscountPercentage.HasValue ? promo.DiscountPercentage.Value.ToString("F0") + "%" : "-")</td>
+                            <td>@promo.StartDate.ToString("dd/MM/yyyy") - @promo.EndDate.ToString("dd/MM/yyyy")</td>
+                            <td class="text-center">
+                                <span class="badge @(promo.IsActive ? "bg-success" : "bg-secondary")">@(promo.IsActive ? "Activa" : "Inactiva")</span>
+                            </td>
+                            <td class="text-end">
+                                <a class="btn btn-sm btn-outline-dark" asp-action="Edit" asp-route-id="@promo.Id">Editar</a>
+                                <form method="post" asp-action="ToggleStatus" asp-route-id="@promo.Id" class="d-inline">
+                                    <button class="btn btn-sm btn-outline-secondary">@(promo.IsActive ? "Desactivar" : "Activar")</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

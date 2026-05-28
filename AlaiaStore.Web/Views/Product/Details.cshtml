@@ -1,0 +1,163 @@
+@model AlaiaStore.Web.ViewModels.Reviews.ProductReviewsViewModel
+@{
+    ViewData["Title"] = Model.Product.Name;
+}
+
+<div class="container my-5 pt-4">
+    <div class="row align-items-center">
+
+        <!-- Product Image -->
+        <div class="col-md-6 mb-4 mb-md-0 d-flex justify-content-center">
+            <div class="overflow-hidden d-flex align-items-center justify-content-center" style="height: 550px; width: 100%; max-width: 500px; background-color: var(--color-surface); border-radius: 4px;">
+                @if(!string.IsNullOrEmpty(Model.Product.MainImageUrl)) {
+                    <img src="@Model.Product.MainImageUrl" alt="@Model.Product.Name" class="w-100 h-100 object-fit-cover" />
+                } else {
+                    <i class="bi bi-stars text-muted" style="font-size: 5rem;"></i>
+                }
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6 px-md-5">
+            <p class="body-medium text-muted mb-2 text-uppercase" style="letter-spacing: 2px; font-size: 0.85rem;">@Model.Product.CategoryName</p>
+            <h1 class="display-large mb-3" style="font-size: 48px;">@Model.Product.Name</h1>
+            @if (ViewData["DiscountPercentage"] is decimal discount && discount > 0)
+            {
+                var discountedPrice = Model.Product.Price * (1 - (discount / 100m));
+                <p class="headline-medium text-dark mb-2">
+                    <span class="text-decoration-line-through text-muted me-2">$@Model.Product.Price.ToString("F2")</span>
+                    <span>$@discountedPrice.ToString("F2")</span>
+                </p>
+                <p class="body-medium text-muted">Descuento aplicado: @discount.ToString("F0")%</p>
+            }
+            else
+            {
+                <p class="headline-medium text-dark mb-4">$@Model.Product.Price.ToString("F2")</p>
+            }
+
+            <div class="mb-4">
+                <p class="body-large text-muted" style="line-height: 1.8;">@Model.Product.Description</p>
+            </div>
+
+            <hr class="mb-4 text-muted" />
+
+            <!-- Add to Cart Form (Visually ready for RF10) -->
+            <form method="post" asp-controller="Cart" asp-action="AddToCart" class="mb-5">
+                <input type="hidden" name="productId" value="@Model.Product.Id" />
+
+                <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="input-group" style="width: 140px;">
+                        <button class="btn btn-outline-secondary" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+                        <input type="number" name="quantity" class="form-control text-center bg-white border-secondary" value="1" min="1" max="10" />
+                        <button class="btn btn-outline-secondary" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary px-5 py-3 w-100" style="font-size: 1.1rem;">
+                    Add to Bag <i class="bi bi-bag ms-2"></i>
+                </button>
+            </form>
+
+            <!-- Accodions for Extra Info -->
+            <div class="accordion accordion-flush" id="productDetailsAccordion">
+                <div class="accordion-item bg-transparent">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-transparent font-title shadow-none px-0" type="button" data-bs-toggle="collapse" data-bs-target="#ingredients">
+                            Ingredients
+                        </button>
+                    </h2>
+                    <div id="ingredients" class="accordion-collapse collapse" data-bs-parent="#productDetailsAccordion">
+                        <div class="accordion-body body-medium text-muted px-0">
+                            @(string.IsNullOrWhiteSpace(Model.Product.Ingredients) ? "Pure natural formulation with dermatologist-approved active ingredients. For full ingredient list please see packaging." : Model.Product.Ingredients)
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-transparent">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-transparent font-title shadow-none px-0" type="button" data-bs-toggle="collapse" data-bs-target="#skintype">
+                            Skin Type Recommendations
+                        </button>
+                    </h2>
+                    <div id="skintype" class="accordion-collapse collapse" data-bs-parent="#productDetailsAccordion">
+                        <div class="accordion-body body-medium text-muted px-0">
+                            @(string.IsNullOrWhiteSpace(Model.Product.SkinType) ? "Suitable for all skin types, including sensitive skin. Formulated without parabens or harsh chemicals." : Model.Product.SkinType)
+        </div>
+                    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-8">
+            <h2 class="headline-medium mb-3">Reseñas</h2>
+
+            @if (Model.Reviews.Any())
+            {
+                <div class="d-flex flex-column gap-3">
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="fw-semibold">@review.UserName</div>
+                                    <small class="text-muted">@review.CreatedAt.ToString("dd/MM/yyyy")</small>
+                                </div>
+                                <div class="mb-2">
+                                    @for (var i = 1; i <= 5; i++)
+                                    {
+                                        <i class="bi @(i <= review.Rating ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                                    }
+                                </div>
+                                @if (!string.IsNullOrWhiteSpace(review.Comment))
+                                {
+                                    <p class="body-medium text-muted mb-0">@review.Comment</p>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="body-medium text-muted">Aún no hay reseñas para este producto.</p>
+            }
+        </div>
+
+        <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="headline-medium mb-3">Deja tu reseña</h3>
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <form method="post" asp-controller="Review" asp-action="Create">
+                            <input type="hidden" asp-for="NewReview.ProductId" />
+                            <div class="mb-3">
+                                <label class="form-label">Calificación</label>
+                                <select asp-for="NewReview.Rating" class="form-select">
+                                    <option value="">Selecciona</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Comentario</label>
+                                <textarea asp-for="NewReview.Comment" class="form-control" rows="4"></textarea>
+                            </div>
+                            <button class="btn btn-primary w-100">Enviar reseña</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <p class="body-medium text-muted">Inicia sesión para dejar una reseña.</p>
+                        <a class="btn btn-outline-secondary w-100" asp-controller="Auth" asp-action="Login">Iniciar sesión</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

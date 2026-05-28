@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C# MVC Web App (AlaiaStore.Web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/AlaiaStore.Web/bin/Debug/net9.0/AlaiaStore.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/AlaiaStore.Web",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/AlaiaStore.Web/Views"
+            }
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --color-bg: #FCF9F8;
+  --color-surface: #F6F3F2;
+  --color-primary: #605E5B;
+  --color-secondary: #FBDBDB;
+  --color-tertiary: #57624D;
+  --color-text: #1B1C1C;
+  --color-outline: #797770;
+  --color-border: #C9C6BE;
+  --color-error: #BA1A1A;
+  --color-white: #FFFFFF;
+
+  --font-title: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-title {
+  font-family: var(--font-title);
+  font-weight: 500;
+}
+
+.display-large { font-size: 64px; }
+.headline-large { font-size: 40px; }
+.headline-medium { font-size: 32px; }
+.body-large { font-size: 18px; }
+.body-medium { font-size: 16px; }
+
+/* Navbar */
+.navbar {
+  background-color: rgba(252, 249, 248, 0.98) !important;
+  backdrop-filter: blur(10px);
+}
+.navbar-brand {
+  font-family: var(--font-title);
+  font-size: 24px;
+  color: var(--color-text) !important;
+}
+.nav-link {
+  color: var(--color-primary) !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--color-text) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-white);
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-outline);
+  color: var(--color-text);
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--color-surface);
+}
+
+/* Cards */
+.card {
+  border: none;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card-img-top {
+  border-radius: 4px;
+  background-color: var(--color-surface);
+  object-fit: cover;
+}
+
+/* Forms */
+.form-control {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 12px 16px;
+}
+.form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: none;
+}

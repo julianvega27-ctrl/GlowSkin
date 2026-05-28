@@ -1,0 +1,54 @@
+@model IEnumerable<AlaiaStore.Web.DTOs.ProductDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid px-0">
+    <!-- Hero Section -->
+    <div class="hero-section text-center d-flex align-items-center justify-content-center" style="min-height: 80vh; background-color: var(--color-surface); padding: 50px 20px;">
+        <div style="max-width: 800px;">
+            <p class="body-medium text-uppercase mb-3" style="letter-spacing: 2px;">New Collection</p>
+            <h1 class="display-large mb-4">Discover Your <br /> Natural Radiance</h1>
+            <p class="body-large mb-4 text-muted">A premium editorial selection of the best dermatological skincare formulas for a pure, clean, and luxurious experience.</p>
+            <a href="#" class="btn btn-primary d-inline-block px-5 py-3">Shop Collection</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 pt-5">
+    <div class="text-center mb-5">
+        <h2 class="headline-medium">Featured Essentials</h2>
+        <p class="body-medium text-muted">Curated exclusively for you</p>
+    </div>
+
+    <!-- Product Grid Minimal -->
+    <div class="row g-4">
+        @if(Model != null && Model.Any())
+        {
+            foreach (var product in Model)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <div class="card h-100">
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="text-decoration-none">
+                            <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden" style="height: 350px;">
+                                @if(!string.IsNullOrEmpty(product.MainImageUrl)) {
+                                    <img src="@product.MainImageUrl" alt="@product.Name" class="w-100 h-100 object-fit-cover" />
+                                } else {
+                                    <i class="bi bi-stars text-muted" style="font-size: 3rem;"></i>
+                                }
+                            </div>
+                        </a>
+                        <div class="card-body text-center mt-3 p-0">
+                            <p class="body-medium text-muted mb-0" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">@product.CategoryName</p>
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="text-decoration-none text-dark">
+                                <h5 class="font-title mb-1">@product.Name</h5>
+                            </a>
+                            <p class="body-medium text-muted mb-2">$@product.Price.ToString("F2")</p>
+                            <a href="#" class="btn btn-secondary w-100 mt-2">Add to Bag</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
