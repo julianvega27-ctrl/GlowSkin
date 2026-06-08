@@ -1,23 +1,12 @@
 @model AlaiaStore.Web.ViewModels.ProductCatalogViewModel
 @{
-    ViewData["Title"] = "Skincare Collection";
+    ViewData["Title"] = "Best Sellers";
 }
 
 <div class="container mt-5 pt-4">
     <div class="text-center mb-5">
-        <h1 class="headline-large">Skincare Collection</h1>
-        <p class="body-large text-muted">Pure ingredients for your natural radiance.</p>
-    </div>
-
-    <!-- Horizontal Category Filter -->
-    <div class="d-flex justify-content-center flex-wrap mb-5 gap-3">
-        <a asp-action="Index" asp-route-categoryId="" class="btn rounded-pill px-4 @(Model.SelectedCategoryId == null ? "btn-dark" : "btn-outline-dark")">All Products</a>
-        @foreach (var category in Model.Categories)
-        {
-            <a asp-action="Index" asp-route-categoryId="@category.Id" class="btn rounded-pill px-4 @(Model.SelectedCategoryId == category.Id ? "btn-dark" : "btn-outline-dark")">
-                @category.Name
-            </a>
-        }
+        <h1 class="headline-large">Best Sellers</h1>
+        <p class="body-large text-muted">Our most loved and effective formulations.</p>
     </div>
 
     <div class="row">
@@ -29,9 +18,12 @@
                     foreach (var product in Model.Products)
                     {
                         <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="card h-100">
-                                <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="text-decoration-none">
-                                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden" style="height: 300px;">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="text-decoration-none position-relative">
+                                    <div class="position-absolute top-0 start-0 m-2">
+                                        <span class="badge bg-dark rounded-pill fw-normal">Best Seller</span>
+                                    </div>
+                                    <div class="card-img-top d-flex align-items-center justify-content-center overflow-hidden" style="height: 300px; background-color: var(--color-surface);">
                                         @if(!string.IsNullOrEmpty(product.MainImageUrl)) {
                                             <img src="@product.MainImageUrl" alt="@product.Name" class="w-100 h-100 object-fit-cover" />
                                         } else {
@@ -45,7 +37,7 @@
                                         <h5 class="font-title mb-1">@product.Name</h5>
                                     </a>
                                     <p class="body-medium text-muted mb-2">$@product.Price.ToString("F2")</p>
-                                    <a href="#" class="btn btn-secondary w-100 mt-2">Add to Bag</a>
+                                    <a href="#" class="btn btn-outline-dark w-100 mt-2 rounded-pill">Add to Bag</a>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +46,7 @@
                 else
                 {
                     <div class="col-12 text-center py-5">
-                        <p class="body-large text-muted">No products found in this category.</p>
+                        <p class="body-large text-muted">No best sellers found at this time.</p>
                     </div>
                 }
             </div>

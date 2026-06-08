@@ -43,7 +43,15 @@
                                 <strong>@item.Product.Name</strong>
                             </td>
                             <td>@item.UnitPrice.ToString("C")</td>
-                            <td>@item.Quantity</td>
+                            <td>
+                                <form asp-action="UpdateQuantity" method="post" class="d-inline-flex align-items-center">
+                                    <input type="hidden" name="itemId" value="@item.Id" />
+                                    <input type="number" name="quantity" value="@item.Quantity" class="form-control form-control-sm me-2" style="width: 70px;" min="1" max="99" />
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary" title="Actualizar cantidad">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </form>
+                            </td>
                             <td>@((item.Quantity * item.UnitPrice).ToString("C"))</td>
                             <td>
                                 <form asp-action="Remove" method="post" class="d-inline">

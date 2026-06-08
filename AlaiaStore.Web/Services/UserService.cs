@@ -8,6 +8,8 @@ public interface IUserService
     Task<User?> GetUserByEmailAsync(string email);
     Task<User?> AuthenticateAsync(string email, string password);
     Task<User> RegisterAsync(string firstName, string lastName, string email, string password);
+    Task<User> UpdateProfileAsync(int userId, string firstName, string lastName, string? phone, string? profilePictureUrl);
+    Task<bool> ChangePasswordAsync(int userId, string currentPassword, string newPassword);
 }
 
 public class UserService : IUserService
@@ -42,7 +44,7 @@ public class UserService : IUserService
     {
         var existingUser = await _userRepository.GetByEmailAsync(email);
         if (existingUser != null)
-            throw new InvalidOperationException("El correo ya est· registrado.");
+            throw new InvalidOperationException("El correo ya est√° registrado.");
 
         var user = new User
         {
@@ -56,5 +58,38 @@ public class UserService : IUserService
         var createdUser = await _userRepository.AddAsync(user);
         await _userRepository.AssignRoleAsync(createdUser.Id, "Customer");
         return createdUser;
+    }
+
+    public async Task<User> UpdateProfileAsync(int userId, string firstName, string lastName, string? phone, string? profilePictureUrl)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user == null)
+            throw new InvalidOperationException("Usuario no encontrado.");
+
+        user.FirstName = firstName;
+        user.LastName = lastName;
+        user.Phone = phone;
+
+        if (!string.IsNullOrEmpty(profilePictureUrl))
+        {
+            user.ProfilePictureUrl = profilePictureUrl;
+        }
+
+        await _userRepository.UpdateAsync(user);
+        return user;
+    }
+
+    public async Task<bool> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user == null)
+            return false;
+
+        if (!_authService.VerifyPassword(currentPassword, user.PasswordHash))
+            return false;
+
+        user.PasswordHash = _authService.HashPassword(newPassword);
+        await _userRepository.UpdateAsync(user);
+        return true;
     }
 }

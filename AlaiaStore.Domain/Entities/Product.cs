@@ -15,6 +15,7 @@ public class Product : BaseEntity
     public int Stock { get; set; }
     public string? MainImageUrl { get; set; }
     public bool IsActive { get; set; } = true;
+    public bool IsBestSeller { get; set; } = false;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public ICollection<ProductImage> Images { get; set; } = new List<ProductImage>();

@@ -35,4 +35,5 @@ public class AdminProductEditDto
     public int CategoryId { get; set; }
 
     public bool IsActive { get; set; } = true;
+    public bool IsBestSeller { get; set; } = false;
 }

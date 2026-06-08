@@ -77,6 +77,25 @@ public class CartController : Controller
 
         return RedirectToAction("Index");
     }
+    [HttpPost]
+    public async Task<IActionResult> UpdateQuantity(int itemId, int quantity)
+    {
+        if (quantity <= 0)
+        {
+            return await Remove(itemId);
+        }
+
+        var item = await _context.CartItems.FindAsync(itemId);
+        if (item != null)
+        {
+            item.Quantity = quantity;
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Cantidad actualizada.";
+        }
+
+        return RedirectToAction("Index");
+    }
+
 
     [HttpPost]
     public async Task<IActionResult> Remove(int itemId)

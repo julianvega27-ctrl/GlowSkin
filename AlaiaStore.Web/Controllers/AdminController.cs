@@ -142,7 +142,8 @@ public class AdminController : Controller
             Stock = model.Stock,
             MainImageUrl = model.MainImageUrl,
             CategoryId = model.CategoryId,
-            IsActive = model.IsActive
+            IsActive = model.IsActive,
+            IsBestSeller = model.IsBestSeller
         };
 
         await _productRepository.AddAsync(product);
@@ -172,7 +173,8 @@ public class AdminController : Controller
                 Stock = product.Stock,
                 MainImageUrl = product.MainImageUrl,
                 CategoryId = product.CategoryId,
-                IsActive = product.IsActive
+                IsActive = product.IsActive,
+                IsBestSeller = product.IsBestSeller
             },
             Categories = categories.Select(c => new DTOs.CategoryDto
             {
@@ -234,6 +236,7 @@ public class AdminController : Controller
         
         product.CategoryId = model.CategoryId;
         product.IsActive = model.IsActive;
+        product.IsBestSeller = model.IsBestSeller;
 
         await _productRepository.UpdateAsync(product);
         return RedirectToAction(nameof(Products));

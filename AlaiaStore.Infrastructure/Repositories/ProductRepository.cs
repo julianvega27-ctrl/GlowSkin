@@ -37,4 +37,12 @@ public class ProductRepository : Repository<Product>, IProductRepository
                 || (p.SkinType != null && p.SkinType.ToLower().Contains(normalizedQuery)))
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<Product>> GetBestSellersAsync()
+    {
+        return await _context.Products
+            .Include(p => p.Category)
+            .Where(p => p.IsBestSeller && p.IsActive)
+            .ToListAsync();
+    }
 }

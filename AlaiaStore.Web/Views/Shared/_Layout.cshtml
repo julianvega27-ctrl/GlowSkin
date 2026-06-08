@@ -28,13 +28,13 @@
                             <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Skincare</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Best Sellers</a>
+                            <a class="nav-link" asp-area="" asp-controller="Product" asp-action="BestSellers">Best Sellers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -54,7 +54,7 @@
                                         <i class="bi bi-person-check"></i>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index">Mi Perfil</a></li>
                                         @if (User.IsInRole("Admin"))
                                         {
                                             <li><a class="dropdown-item" asp-controller="Admin" asp-action="Index">Panel Admin</a></li>
@@ -64,7 +64,7 @@
                                         <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <form method="post" asp-action="Logout" asp-controller="Auth">
-                                                <button type="submit" class="dropdown-item">Cerrar Sesión</button>
+                                                <button type="submit" class="dropdown-item">Cerrar Sesiï¿½n</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -76,7 +76,7 @@
                             }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-bag"></i></a>
+                            <a class="nav-link" asp-controller="Cart" asp-action="Index"><i class="bi bi-cart3"></i></a>
                         </li>
                     </ul>
                 </div>

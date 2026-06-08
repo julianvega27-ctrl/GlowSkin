@@ -42,6 +42,20 @@ public class ProductController : Controller
         return View(viewModel);
     }
 
+    public async Task<IActionResult> BestSellers()
+    {
+        var bestSellers = await _productRepository.GetBestSellersAsync();
+
+        var viewModel = new ProductCatalogViewModel
+        {
+            Products = _mapper.Map<IEnumerable<ProductDto>>(bestSellers),
+            Categories = new List<CategoryDto>(),
+            SelectedCategoryId = null
+        };
+
+        return View(viewModel);
+    }
+
     public async Task<IActionResult> Details(int id)
     {
         var product = await _productRepository.GetProductWithCategoryAsync(id);

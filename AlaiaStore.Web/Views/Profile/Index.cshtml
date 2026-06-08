@@ -1,0 +1,118 @@
+@model AlaiaStore.Web.ViewModels.Profile.ProfileViewModel
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<div class="container my-5 pt-4">
+    <div class="mb-4">
+        <h1 class="headline-large mb-1">Mi Perfil</h1>
+        <p class="body-medium text-muted">Administra tu información personal y de seguridad.</p>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row g-4">
+        <!-- Información Personal -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+                    <h5 class="font-title mb-0">Información Personal</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+                        
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="position-relative me-3">
+                                @if (!string.IsNullOrEmpty(Model.ProfileUpdate.CurrentProfilePictureUrl))
+                                {
+                                    <img src="@Model.ProfileUpdate.CurrentProfilePictureUrl" alt="Foto de perfil" class="rounded-circle object-fit-cover" style="width: 80px; height: 80px;" />
+                                }
+                                else
+                                {
+                                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center text-muted" style="width: 80px; height: 80px;">
+                                        <i class="bi bi-person fs-1"></i>
+                                    </div>
+                                }
+                            </div>
+                            <div class="flex-grow-1">
+                                <label class="form-label mb-1">Foto de Perfil</label>
+                                <input asp-for="ProfileUpdate.ImageFile" type="file" class="form-control form-control-sm" accept="image/*" />
+                                <span asp-validation-for="ProfileUpdate.ImageFile" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="text" class="form-control" value="@Model.Email" disabled />
+                            <div class="form-text">El correo electrónico no puede ser modificado.</div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-sm-6">
+                                <label class="form-label">Nombre</label>
+                                <input asp-for="ProfileUpdate.FirstName" class="form-control" />
+                                <span asp-validation-for="ProfileUpdate.FirstName" class="text-danger small"></span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Apellido</label>
+                                <input asp-for="ProfileUpdate.LastName" class="form-control" />
+                                <span asp-validation-for="ProfileUpdate.LastName" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Teléfono</label>
+                            <input asp-for="ProfileUpdate.Phone" class="form-control" />
+                            <span asp-validation-for="ProfileUpdate.Phone" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-dark rounded-pill py-2">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seguridad -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+                    <h5 class="font-title mb-0">Seguridad</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="ChangePassword" method="post">
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña Actual</label>
+                            <input asp-for="ChangePassword.CurrentPassword" class="form-control" type="password" />
+                            <span asp-validation-for="ChangePassword.CurrentPassword" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nueva Contraseña</label>
+                            <input asp-for="ChangePassword.NewPassword" class="form-control" type="password" />
+                            <span asp-validation-for="ChangePassword.NewPassword" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Confirmar Nueva Contraseña</label>
+                            <input asp-for="ChangePassword.ConfirmPassword" class="form-control" type="password" />
+                            <span asp-validation-for="ChangePassword.ConfirmPassword" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid mt-auto">
+                            <button type="submit" class="btn btn-outline-dark rounded-pill py-2">Actualizar Contraseña</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
